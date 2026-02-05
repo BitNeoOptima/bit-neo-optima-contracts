@@ -1,0 +1,17 @@
+[compiler.solc]
+exclude_paths = ["lib", ".venv", "venv", "script", "test"]
+include_paths = []
+
+[compiler.solc.optimizer]
+runs = 200
+
+[detectors]
+exclude = []
+ignore_paths = ["test", "venv", ".venv"]
+exclude_paths = ["lib", ".venv", "venv", "script", "test"]
+
+[testing]
+cmd = "anvil"
+
+[testing.anvil]
+cmd_args = "--prune-history 100 --transaction-block-keeper 10 --steps-tracing --silent"
