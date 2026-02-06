@@ -210,3 +210,5 @@ __marimo__/
 pytypes
 *.py[cod]
 wake-coverage.cov
+
+dependencies/

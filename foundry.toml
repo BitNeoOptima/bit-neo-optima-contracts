@@ -1,0 +1,16 @@
+[profile.default]
+libs = ["dependencies"]
+solc = "0.8.23"
+evm_version = "paris"
+[fmt]
+line_length = 120
+style = "tab"
+
+[dependencies]
+"@openzeppelin-contracts" = { version = "5.6.0-rc.1" }
+
+[soldeer]
+remappings_generate = true
+remappings_regenerate = true
+remappings_version = true
+remappings_location = "txt"
