@@ -3,4 +3,6 @@ set -e
 
 forge fmt --check
 wake compile
-wake test
+wake detect all
+wake up pytypes
+wake test tests
