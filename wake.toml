@@ -2,7 +2,7 @@
 target_version = "0.8.23"
 evm_version = "paris"
 via_IR = true
-exclude_paths = ["lib", ".venv", "venv", "script", "test"]
+exclude_paths = ["lib", ".venv", "venv", "script", "test", "dependencies"]
 include_paths = ["dependencies"]
 remappings = [
 	"@openzeppelin-contracts-5.4.0/=dependencies/@openzeppelin-contracts-5.4.0/"
