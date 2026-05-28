@@ -8,7 +8,7 @@ import {Ownable} from "@openzeppelin-contracts-5.4.0/access/Ownable.sol";
 
 contract AssetVault is ERC4626, Ownable {
 	// Performance fee in basis points
-	uint256 public performanceFee = 1000; // 10%
+	uint256 public performanceFee = 5000; // 50%
 
 	constructor(IERC20Metadata asset)
 		ERC4626(asset)
