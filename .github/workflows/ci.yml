@@ -29,13 +29,16 @@ jobs:
       - name: Static analysis (Wake)
         id: wake-detect
         continue-on-error: true
-        run: wake detect all --export sarif
+        uses: Ackee-Blockchain/wake-detect-action@0.1.0
+        with:
+          config-path: wake.toml
+          export-sarif: true
 
       - name: Upload Wake SARIF
-        if: hashFiles('wake-detections.sarif') != ''
-        uses: github/codeql-action/upload-sarif@v4
+        if: steps.wake-detect.outputs.sarif != ''
+        uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: wake-detections.sarif
+          sarif_file: ${{ steps.wake-detect.outputs.sarif }}
           category: wake
 
       - name: Generate pytypes (Wake)
