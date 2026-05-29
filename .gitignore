@@ -212,3 +212,5 @@ pytypes
 wake-coverage.cov
 
 dependencies/
+cache/
+out/
