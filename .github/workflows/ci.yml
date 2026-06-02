@@ -26,19 +26,22 @@ jobs:
       - name: Check formatting (Foundry)
         run: forge fmt --check
 
-      - name: Static analysis (Wake)
-        id: wake-detect
-        continue-on-error: true
-        uses: Ackee-Blockchain/wake-detect-action@0.1.0
-        with:
-          config-path: wake.toml
-          export-sarif: true
+      - name: Detect all (Wake)
+        run: wake detect all
 
-      - name: Upload Wake SARIF
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: ${{ steps.wake-detect.outputs.sarif }}
-          checkout_path: ${{ github.workspace }}
+#      - name: Static analysis (Wake)
+#        id: wake-detect
+#        continue-on-error: true
+#        uses: Ackee-Blockchain/wake-detect-action@0.1.0
+#        with:
+#          config-path: wake.toml
+#          export-sarif: true
+
+#      - name: Upload Wake SARIF
+#        uses: github/codeql-action/upload-sarif@v4
+#        with:
+#          sarif_file: ${{ steps.wake-detect.outputs.sarif }}
+#          checkout_path: ${{ github.workspace }}
 
       - name: Generate pytypes (Wake)
         run: wake up pytypes
