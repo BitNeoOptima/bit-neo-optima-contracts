@@ -4,10 +4,11 @@ from wake.testing import *
 from pytypes.contracts.MatrixVault import MatrixVault
 from pytypes.contracts.AssetVault import AssetVault
 from pytypes.wake.interfaces.IERC20 import IERC20
+from wake.testing import Address
 
 load_dotenv()
 
-WETH = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+WETH = Address("0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2")
 DEPOSIT_AMOUNT = 50 * 10**18
 
 
