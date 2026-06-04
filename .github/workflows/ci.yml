@@ -53,6 +53,8 @@ jobs:
         run: wake up pytypes
 
       - name: Test (Wake)
+        env:
+          ETHEREUM_RPC_URL: ${{ secrets.ETHEREUM_RPC_URL }}
         run: wake test
 
 #      - name: Fail if static analysis did not pass
