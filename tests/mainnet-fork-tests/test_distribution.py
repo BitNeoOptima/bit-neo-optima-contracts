@@ -4,7 +4,7 @@ from wake.testing import *
 from pytypes.contracts.MatrixVault import MatrixVault
 from pytypes.contracts.AssetVault import AssetVault
 from pytypes.wake.interfaces.IERC20 import IERC20
-from pytypes.dependencies.openzeppelincontracts5_4_0.token.ERC20.extensions.IERC20Metadata import IERC20Metadata
+from pytypes.wake.interfaces.IERC20Metadata import IERC20Metadata
 
 load_dotenv()
 
