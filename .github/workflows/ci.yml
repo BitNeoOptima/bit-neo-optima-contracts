@@ -46,11 +46,14 @@ jobs:
 #          sarif_file: ${{ steps.wake-detect.outputs.sarif }}
 #          checkout_path: ${{ github.workspace }}
 
+      - name: Compile contracts
+        run: wake compile
+
       - name: Generate pytypes (Wake)
         run: wake up pytypes
 
       - name: Test (Wake)
-        run: wake test tests
+        run: wake test
 
 #      - name: Fail if static analysis did not pass
 #        if: steps.wake-detect.outcome == 'failure'
