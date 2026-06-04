@@ -4,7 +4,7 @@ from wake.testing import *
 from pytypes.contracts.MatrixVault import MatrixVault
 from pytypes.contracts.AssetVault import AssetVault
 from pytypes.wake.interfaces.IERC20 import IERC20
-from wake.testing import Address
+from pytypes.dependencies.openzeppelincontracts5_4_0.token.ERC20.extensions.IERC20Metadata import IERC20Metadata
 
 load_dotenv()
 
@@ -20,7 +20,7 @@ DEPOSIT_AMOUNT = 50 * 10**18
 def test_distribution():
 	user = chain.accounts[1]
 	matrix_vault = MatrixVault.deploy()
-	asset_vault = AssetVault.deploy(WETH)
+	asset_vault = AssetVault.deploy(IERC20Metadata(WETH))
 	assert asset_vault.asset() == WETH
 	# WETH9: plain ETH transfer to the contract mints WETH
 	Account(WETH).transact(value=DEPOSIT_AMOUNT, from_=user)
