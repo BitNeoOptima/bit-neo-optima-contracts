@@ -6,6 +6,9 @@ import {IAaveV3Pool} from "./interfaces/IAaveV3Pool.sol";
 import {IComet} from "./interfaces/IComet.sol";
 
 contract MatrixVault is Ownable {
+	error UnsupportedAction();
+	error UnsupportedProtocol(Protocol protocol, Action action);
+
 	enum Action {
 		Deposit,
 		Withdraw,
@@ -49,7 +52,7 @@ contract MatrixVault is Ownable {
 			} else if (operation.action == Action.SwapOut) {
 				//_swapOut(operation);
 			} else {
-				revert("MatrixVault: unsupported action");
+				revert UnsupportedAction();
 			}
 		}
 	}
@@ -61,12 +64,10 @@ contract MatrixVault is Ownable {
 			IComet(operation.target).supply(operation.asset, operation.value);
 		} else if (operation.protocol == Protocol.Ammalgam) {
 			//ILendingPool(operation.target).deposit(operation.asset, operation.value, address(this), 0);
-		} else if (operation.protocol == Protocol.UniswapV3) {
-			//ILendingPool(operation.target).deposit(operation.asset, operation.value, address(this), 0);
 		} else if (operation.protocol == Protocol.Wrapper) {
 			//ILendingPool(operation.target).deposit(operation.asset, operation.value, address(this), 0);
 		} else {
-			revert("MatrixVault: unsupported protocol");
+			revert UnsupportedProtocol(operation.protocol, operation.action);
 		}
 	}
 
@@ -77,12 +78,10 @@ contract MatrixVault is Ownable {
 			IComet(operation.target).withdraw(operation.asset, operation.value);
 		} else if (operation.protocol == Protocol.Ammalgam) {
 			// withdraw via Ammalgam
-		} else if (operation.protocol == Protocol.UniswapV3) {
-			// withdraw via Uniswap V3
 		} else if (operation.protocol == Protocol.Wrapper) {
 			// withdraw via Wrapper
 		} else {
-			revert("MatrixVault: unsupported protocol");
+			revert UnsupportedProtocol(operation.protocol, operation.action);
 		}
 	}
 
@@ -93,12 +92,10 @@ contract MatrixVault is Ownable {
 			IComet(operation.target).withdraw(operation.asset, operation.value);
 		} else if (operation.protocol == Protocol.Ammalgam) {
 			// borrow via Ammalgam
-		} else if (operation.protocol == Protocol.UniswapV3) {
-			// borrow via Uniswap V3
 		} else if (operation.protocol == Protocol.Wrapper) {
 			// borrow via Wrapper
 		} else {
-			revert("MatrixVault: unsupported protocol");
+			revert UnsupportedProtocol(operation.protocol, operation.action);
 		}
 	}
 
@@ -109,12 +106,10 @@ contract MatrixVault is Ownable {
 			IComet(operation.target).supply(operation.asset, operation.value);
 		} else if (operation.protocol == Protocol.Ammalgam) {
 			// repay via Ammalgam
-		} else if (operation.protocol == Protocol.UniswapV3) {
-			// repay via Uniswap V3
 		} else if (operation.protocol == Protocol.Wrapper) {
 			// repay via Wrapper
 		} else {
-			revert("MatrixVault: unsupported protocol");
+			revert UnsupportedProtocol(operation.protocol, operation.action);
 		}
 	}
 
@@ -124,7 +119,7 @@ contract MatrixVault is Ownable {
 		} else if (operation.protocol == Protocol.UniswapV3) {
 			//
 		} else {
-			revert("MatrixVault: unsupported protocol");
+			revert UnsupportedProtocol(operation.protocol, operation.action);
 		}
 	}
 
@@ -140,7 +135,7 @@ contract MatrixVault is Ownable {
 		} else if (operation.protocol == Protocol.Wrapper) {
 			// swap out via Wrapper
 		} else {
-			revert("MatrixVault: unsupported protocol");
+			revert UnsupportedProtocol(operation.protocol, operation.action);
 		}
 	}*/
 }
