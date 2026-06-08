@@ -1,7 +1,17 @@
 [profile.default]
 libs = ["dependencies"]
-solc = "0.8.23"
+solc = "0.8.29"
 evm_version = "paris"
+
+[profile.default.model_checker]
+contracts = {
+	"contracts/MatrixVault.sol" = ["MatrixVault"],
+	"contracts/AssetVault.sol" = ["AssetVault"],
+}
+engine = "chc"
+timeout = 10000
+targets = ["assert"]
+
 [fmt]
 line_length = 120
 style = "tab"

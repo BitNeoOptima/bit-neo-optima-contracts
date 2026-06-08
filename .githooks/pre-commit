@@ -2,6 +2,7 @@
 set -e
 
 forge fmt --check
+forge build
 wake compile
 wake detect all
 wake up pytypes
