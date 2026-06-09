@@ -19,6 +19,7 @@ contract AssetVault is ERC4626, Ownable {
 	function harvestFee() public {}
 
 	function setPerformanceFee(uint256 newPerformanceFee) external onlyOwner {
+		require(newPerformanceFee <= 10000, "Performance fee must be less than 100%");
 		harvestFee();
 		performanceFee = newPerformanceFee;
 	}
